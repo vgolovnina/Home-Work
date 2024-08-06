@@ -1,62 +1,64 @@
-public class PolyLine {
-    //getLines массив линий
-    //getLenght длина
-    Point[] points;
+import java.util.Arrays;
 
-    public PolyLine(Point point, Point point1, Point point2, Point point3){
+public class PolyLine {
+    private Point[] points;
+    public PolyLine() { // Пустой конструктор
+        this.points = new Point[0];
+    }
+    public PolyLine(Point... points) {  // Конструктор с начальным набором точек
         this.points = points;
     }
 
-    public String toString(){
-        //String s = "Линия ["
+    @Override
+    public String toString() {
         StringBuilder sb = new StringBuilder("Линия [");
-        for (int i = 0; i < points.length; i++){
-            //s+=points[i];
+        for (int i = 0; i < points.length; i++) {
             sb.append(points[i]);
-            if (i < points.length - 1)
-                //s = ",";
-                sb.append(",");
+            if (i < points.length - 1) sb.append(", ");
         }
-        //s = " ] "
         sb.append("]");
         return sb.toString();
     }
 
-    public Line [] getLines(){
+    public Line[] getLines() {
+        //if (points.length < 2) return new Line[0]; //проверку чет не докрутила
+
         Line[] lines = new Line[points.length - 1];
-        for (int i = 0; i < points.length; i++){
+        for (int i = 0; i < lines.length; i++) {
             lines[i] = new Line(points[i], points[i + 1]);
         }
         return lines;
     }
 
-    public double getLenght(){
-        double lenght = 0;
-        for (int i = 0; i < points.length; i++){
-            lenght += new Line(points[i], points[i + 1]).getLenght();
+    public double getLength() {
+        double length = 0;
+        for (int i = 0; i < points.length - 1; i++) {
+            length += new Line(points[i], points[i + 1]).getLength();
         }
-        return lenght;
+        return length;
     }
-    public static void main(String[] args){
-        //1
-        PolyLine polyLine = new PolyLine(new Point(1,5), new Point(2,8), new Point(5,3), new Point(8,9));
+
+    public static void main(String[] args) {
+        // 1
+        PolyLine polyLine = new PolyLine(new Point(1, 5), new Point(2, 8), new Point(5, 3), new Point(8, 9));
         //2
-        System.out.println("Длина ломанной: " + polyLine.getLenght());
+        System.out.println("Длина ломаной: " + polyLine.getLength());
         //3
-        Line lines [] = polyLine.getLines();
+        Line[] lines = polyLine.getLines();
         //4
-        double lineLenght = 0;
-        for (Line line : lines){
-            lineLenght += line.getLenght();
+        double linesLength = 0;
+        for (Line line : lines) {
+            linesLength += line.getLength();
         }
-        System.out.println("Длина массива линий: " + lineLenght);
+        System.out.println("Длина массива линий: " + linesLength);
         //5
-        System.out.println("Сравнение ломанной линии и массива линий" + (polyLine.getLenght() == lineLenght));
+        System.out.println("Длины совпадают: " + (polyLine.getLength() == linesLength));
+
         //6
-
-
-
-
+        polyLine.points[1].x = 12;
+        System.out.println("Ломаная после изменения: " + polyLine);
+        System.out.println("Массив линий после изменения: " + Arrays.toString(polyLine.getLines()));
+        lines[0].start.x = 12; // Точка {2,8} стала {12,8} в первой линии
+        System.out.println("Изменение точки в первой линии: " + lines[0]);
     }
-
 }

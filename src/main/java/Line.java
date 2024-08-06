@@ -45,4 +45,8 @@ public class Line {
         System.out.println("Сумма длин трех линий = " + allLenght);
 
     }
+
+    public double getLength() {
+        return 0;
+    }
 }
