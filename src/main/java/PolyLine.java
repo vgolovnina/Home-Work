@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class PolyLine {
-    private Point[] points;
+    Point[] points;
     public PolyLine() { // Пустой конструктор
         this.points = new Point[0];
     }
