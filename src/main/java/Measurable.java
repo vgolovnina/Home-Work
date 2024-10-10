@@ -2,7 +2,7 @@ interface Measurable {
     double getLength();
 
     class Line implements Measurable {
-        private double length;
+        double length;
 
         public Line(double length) {
             this.length = length;
