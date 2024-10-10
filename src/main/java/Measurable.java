@@ -70,7 +70,6 @@ interface Measurable {
             PolyLine polyLine = new PolyLine(new PolyLine.Point(1, 1), new PolyLine.Point(3, 4), new PolyLine.Point(6, 3));
             ClosedPolyLine closedPolyLine = new ClosedPolyLine(new PolyLine.Point(2, 7), new PolyLine.Point(3, 4), new PolyLine.Point(6, 4));
 
-            //Массив объектов интерфейса
             Measurable[] shapes = {line, polyLine, closedPolyLine};
             printLengths(shapes);
         }
