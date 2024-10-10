@@ -23,7 +23,7 @@ interface Measurable {
             }
         }
 
-        private Point[] points;
+        Point[] points;
 
         public PolyLine(Point... points) {
             this.points = points;
