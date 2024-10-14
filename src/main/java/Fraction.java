@@ -1,61 +1,45 @@
-public class Fraction {
-    int numerator;
-    int denominator;
+class Fraction extends Number {
+    int num, denum;
 
-    public Fraction(int numerator, int denominator) {
-        if (denominator == 0) {
-            throw new IllegalArgumentException("Знаменатель не может быть равен нулю");
+    public Fraction(int num, int denum) {
+        if (num == 0 || denum == 0) {
+            throw new IllegalArgumentException("Числитель/знаменатель не может быть нулем");
         }
-        this.denominator = Math.abs(denominator);
-        this.numerator = denominator < 0 ? -numerator : numerator;
-        reduce();
+        this.num = num;
+        this.denum = denum;
     }
 
-    void reduce() {
-        int gcd = gcd(Math.abs(numerator), denominator); //наибольший общий делитель
-        numerator /= gcd;
-        denominator /= gcd;
-    }
-
-    int gcd(int a, int b) {
-        while (b != 0) {
-            int temp = b;
-            b = a % b;
-            a = temp;
-        }
-        return a;
-    }
-
+    @Override
     public String toString() {
-        return numerator + "/" + denominator;
+        return num + "/" + denum;
     }
 
-    public Fraction sum(Fraction other) {
-        int newNumerator = this.numerator * other.denominator + other.numerator * this.denominator;
-        int newDenominator = this.denominator * other.denominator;
-        return new Fraction(newNumerator, newDenominator);
+    @Override
+    public double doubleValue() {
+        return (double) num / denum;
     }
 
-    public Fraction sum(int integer) {
-        return this.sum(new Fraction(integer, 1));
+    @Override
+    public float floatValue() {
+        return (float) num / denum;
     }
 
-    public Fraction minus(Fraction other) {
-        return this.sum(new Fraction(-other.numerator, other.denominator));
+    @Override
+    public int intValue() {
+        return num / denum; //Целая часть дроби
     }
 
-    public Fraction minus(int integer) {
-        return this.minus(new Fraction(integer, 1));
+    @Override
+    public long longValue() {
+        return num / denum; //Целая часть дроби в long
     }
 
-    public static void main(String[] args) {  // Создание дробей
-
-        Fraction f1 = new Fraction(1, 3);
-        Fraction f2 = new Fraction(2, 5);
-        Fraction f3 = new Fraction(7, 8);
-
-        Fraction result = f1.sum(f2).sum(f3).minus(5);
-        System.out.println(result);
+    public static void main(String[] args) {
+        Fraction fraction = new Fraction(1, 2);
+        System.out.println("Fraction: " + fraction);
+        System.out.println("Double value: " + fraction.doubleValue());
+        System.out.println("Float value: " + fraction.floatValue());
+        System.out.println("Int value: " + fraction.intValue());
+        System.out.println("Long value: " + fraction.longValue());
     }
-
 }
