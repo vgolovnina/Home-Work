@@ -21,12 +21,12 @@ class FractionSum extends Number {
 
     @Override
     public int intValue() {
-        return num / denum; // Возвращает целую часть дроби
+        return num / denum;
     }
 
     @Override
     public long longValue() {
-        return num / denum; // Возвращает целую часть дроби
+        return num / denum;
     }
 
     @Override
