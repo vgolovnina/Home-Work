@@ -1,3 +1,4 @@
+package ru.сourses.numbers;
 class FractionSum extends Number {
     int num, denum;
 
