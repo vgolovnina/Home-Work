@@ -1,3 +1,5 @@
+package ru.сourses.geometry;
+
 class PolyLine {
     static class Point {
         int x, y;

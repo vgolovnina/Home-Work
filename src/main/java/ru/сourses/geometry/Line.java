@@ -1,3 +1,4 @@
+package ru.сourses.geometry;
 public class Line {
     //getLenght -- метод расчета линии
     Point start;

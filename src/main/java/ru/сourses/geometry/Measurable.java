@@ -1,3 +1,4 @@
+package ru.сourses.geometry;
 interface Measurable {
     double getLength();
 
