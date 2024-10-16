@@ -1,6 +1,7 @@
+package ru.сourses.other;
+
 import java.util.ArrayList;
 import java.util.List;
-
 public class Student {
     final String name;
     final List<Integer> grades;
